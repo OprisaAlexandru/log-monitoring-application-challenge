@@ -13,6 +13,8 @@ Example:
 2. Place your 'logs.log' file in the same directory as the script.
 3. Run the script using the command:
     python log_monitoring_application.py
+4. Run the tests using the command:
+    python log_monitoring_application_test.py
 
 ## Code Structure:
 - **parse_log_line**: Parses a singe log line and returns the individual components (PID, Job, Start time, End time)

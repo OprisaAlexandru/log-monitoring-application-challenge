@@ -34,8 +34,6 @@ def process_log_lines(lines):
 def generate_report(jobs):
     report_lines = []
 
-    csv_headers = [ "PID", "Job Description", "Start time", "End time", 'Duration (minutes)', "Potential issues"]
-
     for pid, info in jobs.items():
         if info['start'] and info['end']:
             duration_minutes = ((info['end'] - info['start']).total_seconds()) / 60
@@ -69,8 +67,10 @@ def main():
     jobs = process_logs(filename)
     report = generate_report(jobs)
 
+    csv_headers = [ "PID", "Job Description", "Start time", "End time", 'Duration (minutes)', "Potential issues"]
     with open(output_file, "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
+        writer.writerow(csv_headers)
         for line in report:
             writer.writerow([line])
         
